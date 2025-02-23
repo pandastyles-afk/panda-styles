@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Styles - Hôtel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+        #description {
+            display: block;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, textarea, button {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .avis-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+    </style>
+    <script>
+        function afficherSection(id) {
+            let sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                section.style.display = "none";
+            });
+            document.getElementById(id).style.display = "block";
+        }
+
+        function ajouterAvis(event) {
+            event.preventDefault();
+            let nom = document.getElementById("nomAvis").value;
+            let message = document.getElementById("messageAvis").value;
+            if (nom && message) {
+                let avisContainer = document.getElementById("listeAvis");
+                let nouvelAvis = document.createElement("p");
+                nouvelAvis.innerHTML = `<strong>${nom} :</strong> ${message}`;
+                avisContainer.appendChild(nouvelAvis);
+                document.getElementById("formAvis").reset();
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue à Panda Styles</h1>
+        <p>Un hôtel moderne sur les bords de Juine en Essonne</p>
+    </header>
+    <nav>
+        <a onclick="afficherSection('description')">À Propos</a>
+        <a onclick="afficherSection('menu')">Menu</a>
+        <a onclick="afficherSection('reservation')">Réservation</a>
+        <a onclick="afficherSection('galerie')">Galerie</a>
+        <a onclick="afficherSection('contact')">Contact</a>
+        <a onclick="afficherSection('avis')">Avis Clients</a>
+    </nav>
+    
+    <section id="description">
+        <h2>À Propos de Panda Styles</h2>
+        <p>Panda Styles est un hôtel moderne offrant un cadre paisible en bord de Juine en Essonne. Profitez de notre parking privé et de notre service de restauration haut de gamme.</p>
+    </section>
+    
+    <section id="menu">
+        <h2>Menu du Restaurant</h2>
+        <p>Découvrez notre carte raffinée, préparée avec des ingrédients frais et de qualité.</p>
+    </section>
+    
+    <section id="reservation">
+        <h2>Réservation de Chambres</h2>
+        <p>Réservez votre séjour dès maintenant et profitez d'un confort exceptionnel.</p>
+        <form>
+            <label for="date">Sélectionnez votre date de séjour :</label>
+            <input type="date" id="date" name="date" required>
+            <label for="nights">Nombre de nuits :</label>
+            <input type="number" id="nights" name="nights" min="1" required>
+            <label for="guests">Nombre de personnes :</label>
+            <input type="number" id="guests" name="guests" min="1" required>
+            <button type="submit">Réserver</button>
+        </form>
+    </section>
+    
+    <section id="galerie">
+        <h2>Galerie de Photos</h2>
+        <p>Explorez nos espaces élégants et modernes.</p>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact</h2>
+        <form>
+            <input type="text" name="name" placeholder="Votre nom" required>
+            <input type="email" name="email" placeholder="Votre email" required>
+            <textarea name="message" rows="4" placeholder="Votre message" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+    
+    <section id="avis">
+        <h2>Avis Clients</h2>
+        <div class="avis-container">
+            <h3>Ajouter un Avis</h3>
+            <form id="formAvis" onsubmit="ajouterAvis(event)">
+                <input type="text" id="nomAvis" placeholder="Votre nom" required>
+                <textarea id="messageAvis" rows="3" placeholder="Votre avis" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+            <h3>Avis des Clients</h3>
+            <div id="listeAvis"></div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Panda Styles - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
