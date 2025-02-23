@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Styles - Hôtel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: none; /* Caché jusqu'à l'authentification */
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+        #description {
+            display: block;
+        }
+        .vitrine {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .article {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 250px;
+        }
+        .article img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .login-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+    </style>
+    <script>
+        function afficherSection(id) {
+            document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function afficherLogin() {
+            document.body.innerHTML = `
+                <div class="login-container">
+                    <h2>Connexion</h2>
+                    <input type="text" id="username" placeholder="Identifiant" required>
+                    <input type="password" id="password" placeholder="Mot de passe" required>
+                    <button onclick="verifierIdentifiants()">Se connecter</button>
+                    <p id="login-error" style="color:red;"></p>
+                    <p>Pas encore de compte ? <a href="#" onclick="afficherInscription()">Inscrivez-vous</a></p>
+                </div>
+            `;
+        }
+
+        window.onload = afficherLogin;
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue à Panda Styles</h1>
+        <p>Un hôtel moderne sur les bords de Juine en Essonne</p>
+    </header>
+    <nav>
+        <a onclick="afficherSection('description')">À Propos</a>
+        <a onclick="afficherSection('menu')">Menu</a>
+        <a onclick="afficherSection('reservation')">Réservation</a>
+        <a onclick="afficherSection('galerie')">Galerie</a>
+        <a onclick="afficherSection('vitrine')">Vitrine</a>
+        <a onclick="afficherSection('contact')">Contact</a>
+        <a onclick="afficherSection('avis')">Avis Clients</a>
+    </nav>
+    <section id="description">
+        <h2>À Propos de Panda Styles</h2>
+        <p>Panda Styles est un hôtel moderne offrant un cadre paisible en bord de Juine en Essonne. Profitez de notre parking privé et de notre service de restauration haut de gamme.</p>
+    </section>
+    <section id="vitrine">
+        <h2>Nos Produits</h2>
+        <div class="vitrine">
+            <div class="article">
+                <img src="https://via.placeholder.com/250" alt="Article 1">
+                <h3>Article 1</h3>
+                <p>Description de l'article 1.</p>
+                <p><strong>Prix: 50€</strong></p>
+            </div>
+            <div class="article">
+                <img src="https://via.placeholder.com/250" alt="Article 2">
+                <h3>Article 2</h3>
+                <p>Description de l'article 2.</p>
+                <p><strong>Prix: 75€</strong></p>
+            </div>
+            <div class="article">
+                <img src="https://via.placeholder.com/250" alt="Article 3">
+                <h3>Article 3</h3>
+                <p>Description de l'article 3.</p>
+                <p><strong>Prix: 100€</strong></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Panda Styles - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
